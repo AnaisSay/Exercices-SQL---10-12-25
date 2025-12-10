@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le : mer. 10 déc. 2025 à 12:19
+-- Généré le : mer. 10 déc. 2025 à 13:48
 -- Version du serveur : 9.5.0
 -- Version de PHP : 8.3.28
 
@@ -173,6 +173,29 @@ ALTER TABLE `COMPO`
 --
 ALTER TABLE `FOURNISSEUR`
   MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `ARTICLE`
+--
+ALTER TABLE `ARTICLE`
+  ADD CONSTRAINT `ARTICLE_ibfk_1` FOREIGN KEY (`ID_FOU`) REFERENCES `FOURNISSEUR` (`ID`);
+
+--
+-- Contraintes pour la table `BON`
+--
+ALTER TABLE `BON`
+  ADD CONSTRAINT `BON_ibfk_1` FOREIGN KEY (`ID_FOU`) REFERENCES `FOURNISSEUR` (`ID`);
+
+--
+-- Contraintes pour la table `COMPO`
+--
+ALTER TABLE `COMPO`
+  ADD CONSTRAINT `COMPO_ibfk_1` FOREIGN KEY (`ID_ART`) REFERENCES `ARTICLE` (`ID`),
+  ADD CONSTRAINT `fk_compo_bon` FOREIGN KEY (`ID_BON`) REFERENCES `BON` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
