@@ -35,5 +35,6 @@ UPDATE ARTICLE
             DESIGNATION,
             POSITION(')' IN DESIGNATION) +1
             )
-    );
+    )
+    WHERE POSITION('(' IN DESIGNATION) > 1;
  
